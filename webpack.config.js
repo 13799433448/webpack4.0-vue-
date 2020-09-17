@@ -51,7 +51,6 @@ const generatorHtmlWebpackPlugins = () => {
           chunks: ["manifest", "vendor", item]
       }));
   });
-  console.log(arr)
   return arr;
 }
 
