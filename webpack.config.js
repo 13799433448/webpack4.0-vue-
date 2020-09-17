@@ -10,7 +10,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const fs = require("fs");
 const pagesDirPath = path.resolve(__dirname, "./src/pages");
-
+// 编译进度条
+const WebpackBar = require('webpackbar');
+// webpack 美化工具
+const DashboardPlugin = require("webpack-dashboard/plugin");
 /**
  * 通过约定，降低编码复杂度
  * 每新增一个入口，即在src/pages目录下新增一个文件夹，以页面名称命名，内置一个index.js作为入口文件
@@ -143,7 +146,10 @@ module.exports = {
   plugins: [
     /* HTML 生成插件 */
     ...generatorHtmlWebpackPlugins(),
-
+    // 添加 进度条
+    new WebpackBar(),
+    // 美化工具
+    new DashboardPlugin(),
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
     new webpack.HashedModuleIdsPlugin(),

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 @click="change">{{ msg }}</h1>
+    <h1 @click="change" class="title">{{ msg }}</h1>
   </div>
 </template>
 
@@ -10,16 +10,24 @@
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js'
+      msg: '这是 User 页面'
     }
   },
   
   methods: {
     change(){
       this.$router.push({
-        path: '/sys'
+        path: 'sys'
       })
     }
+  },
+   created(){
+    console.log(1111)
   }
 }
 </script>
+<style lang="scss" scoped>
+ .title {
+   color: rgb(83, 179, 28);
+ }
+</style>
