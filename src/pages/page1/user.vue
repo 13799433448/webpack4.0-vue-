@@ -5,16 +5,14 @@
 </template>
 
 <script>
-
-
-export default {
-  /**
+/**
  * 
- * 简单配置：
- * 第二个参数将作为 alias
- * @route("user/:id")
+ *
+ * @route("/user")
  * 
  */
+export default {
+  
   data () {
     return {
       msg: '这是 User 页面'

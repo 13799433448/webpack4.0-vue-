@@ -68,7 +68,7 @@ const vueRoutePlugins = () => {
       // 文件扩展名，默认只查询 .vue 类型的文件，根据实际需要可以进行扩展
       extension: ['vue', 'js', 'jsx'],
       // 配置 import 路径前缀
-      prefix: '../../../',
+      prefix: '@/',
       // 插件扫描的项目目录，默认会扫描 "src/pages" 下的子目录
       directory: `src/pages/${item}`,
       // 生成的路由文件存放地址，默认存放到 "src/router/index.js"
@@ -165,7 +165,8 @@ module.exports = {
   /* 配置webpack-dev-serve */
   devServer: {
     historyApiFallback: true,
-    overlay: true
+    overlay: true,
+    openPage: 'page1.html'
   },
   /* 插件配置 */
   // 自定义webpack构建过程, 例如，当多个 bundle 共享一些相同的依赖，使用 CommonsChunkPlugin 有助于提取这些依赖到共享的 bundle 中，来避免重复打包
@@ -179,8 +180,8 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
     new webpack.HashedModuleIdsPlugin(),
-    new VueLoaderPlugin()
-    // ...vueRoutePlugins()
+    new VueLoaderPlugin(),
+    ...vueRoutePlugins()
   ],
   mode: "development",
   // 配置模块如何被解析, 即设定相对应模块的解析规则

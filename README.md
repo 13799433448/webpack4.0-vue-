@@ -9,15 +9,14 @@ webpack+vue+多页面
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  npm install(安装)
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  npm run serve(启动服务)
+2.  npm run build(打包)
+3.  页面注释的时候需要添加页面设置，才可以自动生成路由 npm 地址： https://www.npmjs.com/package/@xiyun/vue-route-webpack-plugin
+4.  目前是多页面配置main.js 和 路由等 要在 src/pages/文件名 每个包下面进行单独配置
 
 #### 参与贡献
 

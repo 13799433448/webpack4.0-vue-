@@ -8,7 +8,7 @@
 // 单行注释也是可以的
 /*
 * @route({
- *   path: "home",
+ *   path: "/home",
  *   name: "home",
  *   // 注意：这里 meta 字段的值只支持一层对象
  *   meta: { 
@@ -26,10 +26,7 @@ export default {
   methods: {
     change() {
       this.$router.push({
-        path: "/user",
-        query: {
-          id: 12346
-        }
+        path: "/user"
       });
     }
   },
