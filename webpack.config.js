@@ -14,6 +14,8 @@ const pagesDirPath = path.resolve(__dirname, "./src/pages");
 const WebpackBar = require('webpackbar');
 // webpack 美化工具
 const DashboardPlugin = require("webpack-dashboard/plugin");
+// 自动生成路由
+const VueRouteWebpackPlugin = require("@xiyun/vue-route-webpack-plugin");
 /**
  * 通过约定，降低编码复杂度
  * 每新增一个入口，即在src/pages目录下新增一个文件夹，以页面名称命名，内置一个index.js作为入口文件
@@ -51,6 +53,30 @@ const generatorHtmlWebpackPlugins = () => {
           chunks: ["manifest", "vendor", item]
       }));
   });
+  return arr;
+}
+/**
+ * 扫描pages文件夹，为每个页面生成路由 自动生成路由emmmm失败，暂时先注释
+ */
+const vueRoutePlugins = () => { 
+  const arr = [];
+  let result = fs.readdirSync(pagesDirPath);
+  result.forEach(item => { 
+    console.log(item)
+    arr.push(new VueRouteWebpackPlugin({
+      // 文件扩展名，默认只查询 .vue 类型的文件，根据实际需要可以进行扩展
+      extension: ['vue', 'js', 'jsx'],
+      // 配置 import 路径前缀
+      prefix: '../../../',
+      // 插件扫描的项目目录，默认会扫描 "src/pages" 下的子目录
+      directory: `src/pages/${item}`,
+      // 生成的路由文件存放地址，默认存放到 "src/router/index.js"
+      routeFilePath: `src/pages/${item}/router/children.js`,
+      // 生成的文件中的 import 路径是否使用双引号规范，默认使用
+      // 注意：生成的路由文件中的 path 的引号是原封不动使用用户的
+      doubleQoute: true,
+    }));
+  })
   return arr;
 }
 
@@ -153,6 +179,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.HashedModuleIdsPlugin(),
     new VueLoaderPlugin()
+    // ...vueRoutePlugins()
   ],
   mode: "development",
   // 配置模块如何被解析, 即设定相对应模块的解析规则

@@ -6,6 +6,13 @@
 </template>
 
 <script>
+/**
+ * 
+ * 简单配置：
+ * 第二个参数将作为 alias
+ * @route("sys")
+ * 
+ */
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   data () {

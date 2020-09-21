@@ -9,16 +9,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('@/pages/pages1/home'),
+      component: () => import('@/pages/page1/home'),
       children: [
         // UserProfile 会被渲染在 User 的 <router-view> 中
         {
           path: '/sys',
-          component: () => import('@/pages/pages1/sys')
+          component: () => import('@/pages/page1/sys')
         },
         {
           path: '/user',
-          component: () => import('@/pages/pages1/user')
+          component: () => import('@/pages/page1/user')
         }
       ]
     },

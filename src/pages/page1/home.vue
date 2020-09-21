@@ -4,8 +4,19 @@
     <router-view></router-view>
   </div>
 </template>
-
 <script>
+// 单行注释也是可以的
+/*
+* @route({
+ *   path: "home",
+ *   name: "home",
+ *   // 注意：这里 meta 字段的值只支持一层对象
+ *   meta: { 
+ *     requiresAuth: true,
+ *     userType: "member",
+ *   }
+ * })
+*/
 export default {
   data() {
     return {
