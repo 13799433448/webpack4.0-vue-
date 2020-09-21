@@ -48,9 +48,10 @@ const generatorHtmlWebpackPlugins = () => {
           templatePath = publicTemplatePath;
       }
       arr.push(new HtmlWebpackPlugin({
-          template: templatePath,
-          filename: `${item}.html`,
-          chunks: ["manifest", "vendor", item]
+          template: templatePath, //html模板路径
+          filename: `${item}.html`, //生成的html存放路径，相对于 path
+          chunks: ["manifest", "vendor", item], //加载指定模块中的文件，否则页面会加载所有文件
+          hash:false,    //为静态资源生成hash值
       }));
   });
   return arr;
