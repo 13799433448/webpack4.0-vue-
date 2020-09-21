@@ -4,8 +4,11 @@
 webpack+vue+多页面
 
 #### 软件架构
-使用的是 webpack进行搭建的项目，之后补上 vue，目前缺失 eslint和ts，下次有空在进行补从
-
+使用的是 webpack进行搭建的项目，之后补上 vue，目前缺失 eslint和ts，下次有空在进行补
+文档：搭建项目篇
+链接：http://note.youdao.com/noteshare?id=74d61d64161c2588a4877a1b0f0abe76
+搭建项目的一点点的心得 一点点搭建 有掘金大佬的帮忙
+献上他的 文章链接 https://juejin.im/post/6844904122823491598
 
 #### 安装教程
 
