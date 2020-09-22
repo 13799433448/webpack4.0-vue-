@@ -5,38 +5,38 @@
   </div>
 </template>
 <script>
-// 单行注释也是可以的
-/*
-* @route({
- *   path: "/home",
- *   name: "home",
- *   // 注意：这里 meta 字段的值只支持一层对象
- *   meta: { 
- *     requiresAuth: true,
- *     userType: "member",
- *   }
- * })
-*/
-export default {
-  data() {
-    return {
-      msg: "点我切换1",
-    };
-  },
-  methods: {
-    change() {
-      this.$router.push({
-        path: "/user"
-      });
-    }
-  },
-  created() {
-    console.log('home')
+  // 单行注释也是可以的
+  /*
+   * @route({
+   *   path: "/home",
+   *   name: "home",
+   *   // 注意：这里 meta 字段的值只支持一层对象
+   *   meta: {
+   *     requiresAuth: true,
+   *     userType: "member",
+   *   }
+   * })
+   */
+  export default {
+    data() {
+      return {
+        msg: '点我切换1',
+      }
+    },
+    methods: {
+      change() {
+        this.$router.push({
+          path: '/user',
+        })
+      },
+    },
+    created() {
+      console.log('home')
+    },
   }
-};
 </script>
 <style lang="scss" scoped>
- .title {
-   color: aqua;
- }
+  .title {
+    color: aqua;
+  }
 </style>

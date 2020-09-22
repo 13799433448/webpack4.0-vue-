@@ -5,11 +5,10 @@
   </div>
 </template>
 <script>
-export default {
-  created() {
-    console.log('home1')
+  export default {
+    created() {
+      console.log('home1')
+    },
   }
-};
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

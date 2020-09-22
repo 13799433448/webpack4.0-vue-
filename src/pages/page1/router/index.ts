@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('@/pages/page1/home'),
+      component: () => import('@/pages/page1/home.vue'),
       children: [...routes]
-    },
+    }
   ]
 })
