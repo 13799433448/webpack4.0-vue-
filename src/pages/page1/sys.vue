@@ -5,37 +5,33 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+  import { Vue, Component } from 'vue-property-decorator'
+  import userInfo from './store/modules/index'
   /**
    *
    * 简单配置：
    * 第二个参数将作为 alias
-   * @route("/sys")
+   * @route('/sys')
    *
    */
   // , mapGetters, mapMutations, mapActions
-  import { mapState } from 'vuex'
-  export default {
-    data() {
-      return {
-        msg: 'Welcome to Your Sys.js',
-      }
-    },
-    computed: {
-      ...mapState('userInfo', ['Token']),
-    },
-    methods: {
-      change() {
-        // 跳转到其他模块的某个页面下就这样咯
-        // window.location.href = '/page2.html#/exchange'
-        window.location.href = '/page2.html'
-        // this.$router.push({
-        //   path: '/page2.html'
-        // })
-      },
-      back() {
-        window.location.href = '/page1.html'
-      },
-    },
+  @Component
+  export default class extends Vue {
+    msg = 'Welcome to Your Sys.js'
+    get Token(): string {
+      return userInfo.Token
+    }
+    change(): void {
+      // 跳转到其他模块的某个页面下就这样咯
+      // window.location.href = '/page2.html#/exchange'
+      window.location.href = '/page2.html'
+      // this.$router.push({
+      //   path: '/page2.html'
+      // })
+    }
+    back(): void {
+      window.location.href = '/page1.html'
+    }
   }
 </script>

@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-    1111
+    App.vue
     <router-view></router-view>
   </div>
 </template>
-<script>
-  export default {
-    created() {
-      console.log('home1')
-    },
-  }
+<script lang="ts">
+  import { Vue, Component } from 'vue-property-decorator'
+  @Component
+  export default class extends Vue {}
 </script>
 <style lang="scss" scoped></style>

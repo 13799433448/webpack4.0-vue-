@@ -4,30 +4,26 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   /**
    *
    *
-   * @route("/user")
+   * @route('/user')
    *
    */
-  export default {
-    data() {
-      return {
-        msg: '这是 User 页面',
-      }
-    },
+  import { Vue, Component } from 'vue-property-decorator'
+  @Component
+  export default class extends Vue {
+    msg = '这是 User 页面'
 
-    methods: {
-      change() {
-        this.$router.push({
-          path: 'sys',
-        })
-      },
-    },
-    created() {
+    change(): void {
+      this.$router.push({
+        path: 'sys',
+      })
+    }
+    created(): void {
       console.log(1111)
-    },
+    }
   }
 </script>
 <style lang="scss" scoped>

@@ -81,7 +81,7 @@ const vueRoutePlugins = () => {
         routeFilePath: `src/pages/${item}/router/children.ts`,
         // 生成的文件中的 import 路径是否使用双引号规范，默认使用
         // 注意：生成的路由文件中的 path 的引号是原封不动使用用户的
-        doubleQoute: true,
+        doubleQoute: false,
       })
     )
   })
@@ -162,11 +162,20 @@ module.exports = {
         exclude: /node_modules/,
         enforce: 'pre',
         loader: 'eslint-loader',
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitError: true,
+          failOnWarning: true,
+          failOnError: true,
+        },
       },
       {
         test: /\.ts?$/,
         loader: 'ts-loader',
-        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+          allowTsInNodeModules: true,
+        },
       },
       {
         test: /\.css$/,
@@ -217,12 +226,12 @@ module.exports = {
     // 例如 import Vue from 'vue'，会自动到 'vue/dist/vue.common.js'中寻找
     // 这样可以使之后在开发项目的时候, 引用文件时不必关注不同层级的问题
     alias: {
-      '@': path.join(__dirname, './', 'src'),
-      '@api': path.join(__dirname, './', 'src/api'),
-      '@styles': path.join(__dirname, './', 'src/styles'),
-      '@config': path.join(__dirname, './', 'config'),
+      '@': path.resolve(__dirname, './', 'src'),
+      '@api': path.resolve(__dirname, './', 'src/api'),
+      '@styles': path.resolve(__dirname, './', 'src/styles'),
+      '@config': path.resolve(__dirname, './', 'config'),
       vue$: 'vue/dist/vue.esm.js',
-      '@components': path.join(__dirname, './', 'src/components'),
+      '@components': path.resolve(__dirname, './', 'src/components'),
     },
   },
 }

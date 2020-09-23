@@ -4,12 +4,12 @@
     <router-view></router-view>
   </div>
 </template>
-<script>
+<script lang="ts">
   // 单行注释也是可以的
   /*
    * @route({
-   *   path: "/home",
-   *   name: "home",
+   *   path: '/home',
+   *   name: 'home',
    *   // 注意：这里 meta 字段的值只支持一层对象
    *   meta: {
    *     requiresAuth: true,
@@ -17,22 +17,15 @@
    *   }
    * })
    */
-  export default {
-    data() {
-      return {
-        msg: '点我切换1',
-      }
-    },
-    methods: {
-      change() {
-        this.$router.push({
-          path: '/user',
-        })
-      },
-    },
-    created() {
-      console.log('home')
-    },
+  import { Vue, Component } from 'vue-property-decorator'
+  @Component
+  export default class extends Vue {
+    msg = '点我切换1'
+    change(): void {
+      this.$router.push({
+        path: '/user',
+      })
+    }
   }
 </script>
 <style lang="scss" scoped>
