@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <h1 @click="change" class="title">{{ msg }}</h1>
-    <router-view></router-view>
+    <el-button type="primary" @click="change">{{ msg }}</el-button>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 <script lang="ts">
@@ -22,6 +22,7 @@
   export default class extends Vue {
     msg = '点我切换1'
     change(): void {
+      this.$message.success('转换')
       this.$router.push({
         path: '/user',
       })

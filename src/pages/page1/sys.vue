@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 @click="change">{{ msg }}{{ Token }}</h1>
-    <h1 @click="back">回到pages1</h1>
+    <h1 @click="back">回到home</h1>
   </div>
 </template>
 
@@ -31,7 +31,10 @@
       // })
     }
     back(): void {
-      window.location.href = '/page1.html'
+      // window.location.href = '/page1.html'
+      this.$router.push({
+        path: 'home',
+      })
     }
   }
 </script>
