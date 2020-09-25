@@ -7,9 +7,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // 使用该插件 , 会解析vue文件
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const TerserPlugin = require('terser-webpack-plugin')
+// const TerserPlugin = require('terser-webpack-plugin')
 const fs = require('fs')
-const pagesDirPath = path.resolve(__dirname, './src/pages')
+const pagesDirPath = path.resolve(__dirname, '../src/pages')
 // 编译进度条
 const WebpackBar = require('webpackbar')
 // webpack 美化工具
@@ -31,7 +31,7 @@ const getEntries = () => {
   const result = fs.readdirSync(pagesDirPath)
   const entry = {}
   result.forEach((item) => {
-    entry[item] = path.resolve(__dirname, `./src/pages/${item}/main.ts`)
+    entry[item] = path.resolve(__dirname, `../src/pages/${item}/main.ts`)
   })
   return entry
 }
@@ -253,28 +253,28 @@ module.exports = {
     // 例如 import Vue from 'vue'，会自动到 'vue/dist/vue.common.js'中寻找
     // 这样可以使之后在开发项目的时候, 引用文件时不必关注不同层级的问题
     alias: {
-      '@': path.resolve(__dirname, './', 'src'),
-      '@api': path.resolve(__dirname, './', 'src/api'),
-      '@styles': path.resolve(__dirname, './', 'src/styles'),
-      '@config': path.resolve(__dirname, './', 'config'),
+      '@': path.resolve(__dirname, '../', 'src'),
+      '@api': path.resolve(__dirname, '../', 'src/api'),
+      '@styles': path.resolve(__dirname, '../', 'src/styles'),
+      '@config': path.resolve(__dirname, '../', 'config'),
       vue$: 'vue/dist/vue.esm.js',
-      '@components': path.resolve(__dirname, './', 'src/components'),
+      '@components': path.resolve(__dirname, '../', 'src/components'),
     },
   },
 }
 /*
 修改webpack.config.js，判断NODE_ENV为production时，压缩js代码
 */
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+// if (process.env.NODE_ENV === 'production') {
+//   module.exports.devtool = '#source-map'
 
-  module.exports.optimization = {
-    minimizer: [
-      new TerserPlugin({
-        cache: true, // 开启缓存
-        parallel: true, // 支持多进程
-        sourceMap: true,
-      }),
-    ],
-  }
-}
+//   module.exports.optimization = {
+//     minimizer: [
+//       new TerserPlugin({
+//         cache: true, // 开启缓存
+//         parallel: true, // 支持多进程
+//         sourceMap: true,
+//       }),
+//     ],
+//   }
+// }
