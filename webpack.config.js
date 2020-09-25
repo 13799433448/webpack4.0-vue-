@@ -16,6 +16,11 @@ const WebpackBar = require('webpackbar')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 // 自动生成路由
 const VueRouteWebpackPlugin = require('@xiyun/vue-route-webpack-plugin')
+// 加快编译
+const HappyPack = require('happypack')
+// 显示打包时间
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const chalk = require('chalk')
 /**
  * 通过约定，降低编码复杂度
  * 每新增一个入口，即在src/pages目录下新增一个文件夹，以页面名称命名，内置一个index.js作为入口文件
@@ -150,12 +155,15 @@ module.exports = {
       },
       {
         test: /\.(js|ts)$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
+        loader: 'happypack/loader?id=happyBabel',
+        exclude: /node_modules/,
+        // happypack 使用options会报错
+        // use: {
+        //   loader: 'babel-loader',
+        //   options: {
+        //     presets: ['@babel/preset-env'],
+        //   },
+        // },
       },
       {
         test: /\.(js|vue|tsx?)$/,
@@ -215,6 +223,25 @@ module.exports = {
     new webpack.HashedModuleIdsPlugin(),
     new VueLoaderPlugin(),
     ...vueRoutePlugins(),
+    new HappyPack({
+      // 用id来标识 happypack处理那里类文件
+      id: 'happyBabel',
+      // 如何处理  用法和loader 的配置一样
+      loaders: [
+        {
+          loader: 'babel-loader',
+        },
+      ],
+      // 允许 HappyPack 输出日志
+      verbose: true,
+    }),
+    new ProgressBarPlugin({
+      format:
+        '  build [:bar] ' +
+        chalk.green.bold(':percent') +
+        ' (:elapsed seconds)',
+      clear: false,
+    }),
   ],
   // eslint-disable-next-line no-dupe-keys
   mode: 'development',
