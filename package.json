@@ -5,10 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
-    "serve": "cross-env NODE_ENV=development  webpack-dev-server --hot --open --config ./build/webpack.config.js",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules ./build/webpack.prod.config.js",
+    "serve": "cross-env NODE_ENV=development  webpack-dev-server --hot --open --config ./build/webpack.config.dev",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/webpack.config.prod",
     "lint": "eslint --ext .js,.vue src",
-    "analyz": "cross-env NODE_ENV=analyz npm_config_report=true npm run build"
+    "analyz": "NODE_ENV=production npm_config_report=true npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -60,6 +60,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "file-loader": "^6.1.0",
     "prettier": "^2.1.2",
+    "progress-bar-webpack-plugin": "^2.1.0",
     "resolve-url-loader": "^3.1.1",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
@@ -73,7 +74,7 @@
     "vue-style": "^1.0.0-alpha.2",
     "vue-style-loader": "^4.1.2",
     "vuex": "^3.5.1",
-    "vuex-class": "^0.3.2",
+    "webpack-env": "^0.8.0",
     "webpack-merge": "^5.1.4",
     "webpackbar": "^4.0.0"
   }

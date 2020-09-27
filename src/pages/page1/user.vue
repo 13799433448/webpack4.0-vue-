@@ -11,18 +11,15 @@
    * @route('/user')
    *
    */
-  import { Vue, Component } from 'vue-property-decorator'
+  import { Vue, Component } from "vue-property-decorator"
   @Component
-  export default class extends Vue {
-    msg = '这是 User 页面'
+  export default class YourComponent extends Vue {
+    msg = "这是 User 页面"
 
     change(): void {
       this.$router.push({
-        path: 'sys',
+        path: "sys",
       })
-    }
-    created(): void {
-      console.log(1111)
     }
   }
 </script>

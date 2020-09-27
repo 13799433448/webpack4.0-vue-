@@ -1,6 +1,6 @@
-import home from '@/pages/page1/home.vue'
-import sys from '@/pages/page1/sys.vue'
-import user from '@/pages/page1/user.vue'
+import home from "@/pages/page1/home.vue"
+import sys from "@/pages/page1/sys.vue"
+import user from "@/pages/page1/user.vue"
 
 export default [
   {

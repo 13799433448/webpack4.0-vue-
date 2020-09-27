@@ -46,7 +46,7 @@ const generatorHtmlWebpackPlugins = () => {
     const selfTemplatePath = pagesDirPath + `/${item}/index.html`
     const publicTemplatePath = path.resolve(
       __dirname,
-      "./src/public/index.html"
+      "../src/public/index.html"
     )
     try {
       fs.accessSync(selfTemplatePath)
@@ -85,7 +85,7 @@ const vueRoutePlugins = () => {
         routeFilePath: `src/pages/${item}/router/children.ts`,
         // 生成的文件中的 import 路径是否使用双引号规范，默认使用
         // 注意：生成的路由文件中的 path 的引号是原封不动使用用户的
-        doubleQoute: false,
+        doubleQoute: true,
       })
     )
   })
@@ -165,20 +165,13 @@ module.exports = {
         exclude: /node_modules/,
         enforce: "pre",
         loader: "eslint-loader",
-        options: {
-          formatter: require("eslint-friendly-formatter"),
-          emitError: true,
-          failOnWarning: true,
-          failOnError: true,
-        },
       },
       {
         test: /\.ts?$/,
         loader: "ts-loader",
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
-          allowTsInNodeModules: true,
-        },
+        exclude: /node_modules/,
+        // 必须添加 不然会报错
+        options: { appendTsSuffixTo: [/\.vue$/] },
       },
       {
         test: /\.css$/,
@@ -202,7 +195,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     overlay: true,
-    openPage: "page1.html#/home",
+    openPage: "page1.html",
   },
   /* 插件配置 */
   // 自定义webpack构建过程, 例如，当多个 bundle 共享一些相同的依赖，使用 CommonsChunkPlugin 有助于提取这些依赖到共享的 bundle 中，来避免重复打包
@@ -224,7 +217,10 @@ module.exports = {
       //如何处理  用法和loader 的配置一样
       loaders: [
         {
-          loader: "babel-loader?cacheDirectory=true",
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
         },
       ],
       //共享进程池
@@ -243,12 +239,12 @@ module.exports = {
     // 例如 import Vue from 'vue'，会自动到 'vue/dist/vue.common.js'中寻找
     // 这样可以使之后在开发项目的时候, 引用文件时不必关注不同层级的问题
     alias: {
-      "@": path.resolve(__dirname, "../", "src"),
-      "@api": path.resolve(__dirname, "../", "src/api"),
-      "@styles": path.resolve(__dirname, "../", "src/styles"),
-      "@config": path.resolve(__dirname, "../", "config"),
+      "@": path.join(__dirname, "../", "src"),
+      "@api": path.join(__dirname, "../", "src/api"),
+      "@styles": path.join(__dirname, "../", "src/styles"),
+      "@config": path.join(__dirname, "../", "config"),
       vue$: "vue/dist/vue.esm.js",
-      "@components": path.resolve(__dirname, "../", "src/components"),
+      "@components": path.join(__dirname, "../", "src/components"),
     },
   },
 }

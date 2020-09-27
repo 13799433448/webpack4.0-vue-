@@ -1,7 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-// import userInfo from './modules/index'
+import Vuex from "vuex"
+import Vue from "vue"
 
 Vue.use(Vuex)
 

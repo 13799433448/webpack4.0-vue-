@@ -6,8 +6,6 @@
 </template>
 
 <script lang="ts">
-  import { Vue, Component } from 'vue-property-decorator'
-  import userInfo from './store/modules/index'
   /**
    *
    * 简单配置：
@@ -15,26 +13,24 @@
    * @route('/sys')
    *
    */
-  // , mapGetters, mapMutations, mapActions
+  import { Vue, Component } from "vue-property-decorator"
+  import UserModule from "@/pages/page1/store/modules/index"
   @Component
   export default class extends Vue {
-    msg = 'Welcome to Your Sys.js'
+    msg = "Welcome to Your Sys.js"
     get Token(): string {
-      return userInfo.Token
+      return UserModule.Token
     }
     change(): void {
       // 跳转到其他模块的某个页面下就这样咯
       // window.location.href = '/page2.html#/exchange'
-      window.location.href = '/page2.html'
+      window.location.href = "/page2.html"
       // this.$router.push({
       //   path: '/page2.html'
       // })
     }
     back(): void {
-      // window.location.href = '/page1.html'
-      this.$router.push({
-        path: 'home',
-      })
+      window.location.href = "/page1.html"
     }
   }
 </script>

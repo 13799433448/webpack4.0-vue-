@@ -1,6 +1,6 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import routes from './children'
+import Vue from "vue"
+import Router from "vue-router"
+import routes from "./children"
 
 Vue.use(Router)
 
@@ -10,8 +10,8 @@ export default new Router({
   // routes: [...routes]
   routes: [
     {
-      path: '/',
-      component: () => import('@/pages/page1/App.vue'),
+      path: "/",
+      component: () => import("@/pages/page1/home.vue"),
       children: [...routes],
     },
   ],

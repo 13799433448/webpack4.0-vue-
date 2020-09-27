@@ -1,39 +1,38 @@
-import store from '../index'
+import store from "../index"
 import {
   Action,
   getModule,
   Module,
   Mutation,
   VuexModule,
-} from 'vuex-module-decorators'
-class State {
+} from "vuex-module-decorators"
+
+interface State {
   Token: string
 }
-// class userInfo {
+
 @Module({
   namespaced: true,
-  name: 'Exam',
+  name: "Exam",
   store,
   dynamic: true,
 })
-class UserInfo extends VuexModule implements State {
-  // namespaced = true
-  // state: State = new State()
-  Token = ''
-  getToken(state: State) {
-    return state.Token
+class UserModule extends VuexModule implements State {
+  Token = ""
+
+  @Action
+  setToken(val: string) {
+    this.SET_TOKEN(val)
   }
 
   @Mutation
-  TOKEN(token: string) {
-    this.Token = token
+  SET_TOKEN(val: string) {
+    this.Token = val
   }
 
-  // actions = {
-  @Action
-  //自定义触发mutations里函数的方法，context与store 实例具有相同方法和属性
-  hideFooter(token: string) {
-    this.TOKEN(token)
+  get getToken() {
+    return this.Token
   }
 }
-export default getModule(UserInfo)
+
+export default getModule(UserModule)
