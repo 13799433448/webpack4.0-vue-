@@ -1,27 +1,38 @@
-import { ActionContext } from 'vuex'
-class State {
-  Token  = ''
+import store from "../index"
+import {
+  Action,
+  getModule,
+  Module,
+  Mutation,
+  VuexModule,
+} from "vuex-module-decorators"
+
+interface State {
+  Token: string
 }
-class userInfo {
-  namespaced = true
-  state: State = new State()
-  getter = {
-    getToken(state: State) {
-      return state.Token
-    },
+
+@Module({
+  namespaced: true,
+  name: "Exam",
+  store,
+  dynamic: true,
+})
+class UserModule extends VuexModule implements State {
+  Token = ""
+
+  @Action
+  setToken(val: string) {
+    this.SET_TOKEN(val)
   }
 
-  mutations = {
-    TOKEN(state: State, token: string) {
-      state.Token = token
-    },
+  @Mutation
+  SET_TOKEN(val: string) {
+    this.Token = val
   }
-  actions = {
-    //自定义触发mutations里函数的方法，context与store 实例具有相同方法和属性
-    hideFooter(context: ActionContext<State, any>, token: string) {
-      //num为要变化的形参
-      context.commit('TOKEN', token)
-    },
+
+  get getToken() {
+    return this.Token
   }
 }
-export default userInfo
+
+export default getModule(UserModule)

@@ -1,10 +1,11 @@
 <template>
-  <div id="app">
-    <h1 @click="change" class="title">{{ msg }}</h1>
-    <router-view></router-view>
+  <div>
+    <h1 class="title" @click="change">111</h1>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
-<script>
+<script lang="ts">
+  import { Component, Vue } from "vue-property-decorator"
   // 单行注释也是可以的
   /*
    * @route({
@@ -17,22 +18,18 @@
    *   }
    * })
    */
-  export default {
-    data() {
-      return {
-        msg: '点我切换1',
-      }
-    },
-    methods: {
-      change() {
-        this.$router.push({
-          path: '/user',
-        })
-      },
-    },
-    created() {
-      console.log('home')
-    },
+
+  @Component
+  export default class extends Vue {
+    msg = "点我切换1"
+    get msgA(): string {
+      return "11111"
+    }
+    change(): void {
+      this.$router.push({
+        path: "/user",
+      })
+    }
   }
 </script>
 <style lang="scss" scoped>

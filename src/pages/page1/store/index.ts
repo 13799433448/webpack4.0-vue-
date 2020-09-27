@@ -1,12 +1,6 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-import userInfo from './modules/index'
+import Vuex from "vuex"
+import Vue from "vue"
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  modules: {
-    userInfo: new userInfo(),
-  },
-})
+export default new Vuex.Store({})
