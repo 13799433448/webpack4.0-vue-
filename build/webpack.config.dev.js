@@ -4,6 +4,7 @@ module.exports = merge(base, {
   mode: "development",
   devtool: "source-map",
   /* 配置webpack-dev-serve */
+  /* 跨域也需要靠这个 */
   devServer: {
     historyApiFallback: true,
     overlay: true,

@@ -163,6 +163,9 @@ module.exports = {
       {
         test: /\.(js|vue|tsx?)$/,
         exclude: /node_modules/,
+        /**
+         * 预先进行
+         */
         enforce: "pre",
         loader: "eslint-loader",
       },
@@ -195,7 +198,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     overlay: true,
-    openPage: "page1.html",
+    openPage: "page1.html#/home",
   },
   /* 插件配置 */
   // 自定义webpack构建过程, 例如，当多个 bundle 共享一些相同的依赖，使用 CommonsChunkPlugin 有助于提取这些依赖到共享的 bundle 中，来避免重复打包
