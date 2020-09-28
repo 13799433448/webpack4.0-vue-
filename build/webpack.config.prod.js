@@ -1,7 +1,7 @@
-const { merge } = require('webpack-merge')
-const base = require('./webpack.config.base')
-const TerserPlugin = require('terser-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+const { merge } = require("webpack-merge")
+const base = require("./webpack.config.base")
+const TerserPlugin = require("terser-webpack-plugin")
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin
 module.exports = merge(base, {
   optimization: {
@@ -14,21 +14,21 @@ module.exports = merge(base, {
       }),
     ],
   },
-  mode: 'production',
+  mode: "production",
   devtool: false,
   plugins: [
     new BundleAnalyzerPlugin(
       new BundleAnalyzerPlugin({
-        analyzerMode: 'server',
-        analyzerHost: '127.0.0.1',
+        analyzerMode: "server",
+        analyzerHost: "127.0.0.1",
         analyzerPort: 8889,
-        reportFilename: 'report.html',
-        defaultSizes: 'parsed',
+        reportFilename: "report.html",
+        defaultSizes: "parsed",
         openAnalyzer: true,
         generateStatsFile: false,
-        statsFilename: 'stats.json',
+        statsFilename: "stats.json",
         statsOptions: null,
-        logLevel: 'info',
+        logLevel: "info",
       })
     ),
   ],
