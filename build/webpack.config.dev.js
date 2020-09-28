@@ -1,5 +1,6 @@
 const { merge } = require("webpack-merge")
 const base = require("./webpack.config.base")
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin") // 热更新 冷启动
 module.exports = merge(base, {
   mode: "development",
   devtool: "source-map",
@@ -26,4 +27,5 @@ module.exports = merge(base, {
     //   }
     // }
   },
+  plugins: [new HardSourceWebpackPlugin()],
 })
