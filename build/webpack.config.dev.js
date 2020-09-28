@@ -1,5 +1,6 @@
 const { merge } = require("webpack-merge")
 const base = require("./webpack.config.base")
+// 是webpack的插件，为模块提供中间缓存步骤。
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin") // 热更新 冷启动
 module.exports = merge(base, {
   mode: "development",
