@@ -119,6 +119,7 @@ const cssLoader = (type) => {
   )
 }
 module.exports = {
+  // 将编译、打包、压缩后的代码映射回源代码的过程。打包压缩后的代码不具备良好的可读性，想要调试源码就需要 soucre map。
   devtool: "source-map",
   mode: "development", //  webpack4.x版本中需要加入这个属性
   /* webpack 入口起点*/
@@ -140,7 +141,7 @@ module.exports = {
     rules: [
       {
         test: /.vue$/, // 匹配对象的后缀, 如这里匹配.vue文件
-        loader: "vue-loader", // 用于转换该文件类型的loader,
+        loader: "vue-loader", // 用于转换该文件类型的loader, 依赖于 vue-template-compiler,需要额外安装
         options: {
           // 内部配置
           transformAssetUrls: {
