@@ -191,7 +191,15 @@ module.exports = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
-        loader: "file-loader",
+        use: [
+          "file-loader",
+          {
+            loader: "image-webpack-loader",
+            options: {
+              name: "img/[name][hash:8].[ext]",
+            },
+          },
+        ],
       },
     ],
   },

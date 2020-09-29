@@ -13,6 +13,27 @@ module.exports = merge(base, {
         sourceMap: true,
       }),
     ],
+    splitChunks: {
+      chunks: "async",
+      minSize: 20000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: "~",
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
   },
   mode: "production",
   devtool: false,
