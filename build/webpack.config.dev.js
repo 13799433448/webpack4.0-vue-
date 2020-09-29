@@ -4,7 +4,8 @@ const base = require("./webpack.config.base")
 // const HardSourceWebpackPlugin = require("hard-source-webpack-plugin") // 热更新 冷启动
 module.exports = merge(base, {
   mode: "development",
-  // 将编译、打包、压缩后的代码映射回源代码的过程。打包压缩后的代码不具备良好的可读性，想要调试源码就需要 soucre map。
+  // SourceMap是一种映射关系。当项目运行后，如果出现错误，错误信息只能定位到打包后文件中错误的位置。
+  // 如果想查看在源文件中错误的位置，则需要使用映射关系，找到对应的位置。
   devtool: "source-map",
   /* 配置webpack-dev-serve */
   /* 跨域也需要靠这个 */
