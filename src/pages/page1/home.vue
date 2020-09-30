@@ -6,6 +6,7 @@
 </template>
 <script lang="ts">
   import { Component, Vue } from "vue-property-decorator"
+  import _ from "lodash"
   // 单行注释也是可以的
   /*
    * @route({
