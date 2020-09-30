@@ -231,6 +231,8 @@ module.exports = {
         {
           loader: "babel-loader",
           options: {
+            // 按需加载lodash.js
+            plugins: ["lodash"],
             presets: ["@babel/preset-env"],
           },
         },

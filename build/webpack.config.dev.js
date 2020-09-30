@@ -1,4 +1,5 @@
 const { merge } = require("webpack-merge")
+const webpack = require("webpack")
 const base = require("./webpack.config.base")
 // 是webpack的插件，为模块提供中间缓存步骤。
 // const HardSourceWebpackPlugin = require("hard-source-webpack-plugin") // 热更新 冷启动
@@ -30,5 +31,6 @@ module.exports = merge(base, {
     //   }
     // }
   },
-  // plugins: [new HardSourceWebpackPlugin()],
+  // HMR 绝对不能被用在生产环境。Hot Module Replacement
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 })
