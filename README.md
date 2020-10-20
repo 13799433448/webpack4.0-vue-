@@ -12,7 +12,7 @@ webpack+vue+多页面
 
 #### 安装教程
 
-1.  npm install(安装)
+1.  npm install(安装完毕即可)
 
 #### 使用说明
 
